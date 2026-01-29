@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://7r6toeh66ak5"]
+
+[ext_resource type="Script" uid="uid://gp5a0ohs7lrn" path="res://runner_rigid.gd" id="1_f7b3c"]
+[ext_resource type="Texture2D" uid="uid://bnuuskefhg132" path="res://snowboard with shoes.svg" id="2_f7b3c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m3p76"]
+
+[node name="Skater" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_m3p76")
+can_sleep = false
+angular_damp = 4.0
+script = ExtResource("1_f7b3c")
+forward_speed = 1000
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+limit_left = 0
+rotation_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_f7b3c")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(0.2, 0.2)
+polygon = PackedVector2Array(-103.5, -56, -105.5, -55, -107.899994, -55, -116.899994, -45, -119.899994, -45, -113.29999, -27.3, -116.5, -26, -119.100006, -26, -126.79999, -13.599998, -127.20001, -14, -131.1, -14, -133.1, -11, -134.9, -11, -136, 7.700001, -137.9, 5, -141, 5, -147, 13, -149, 13, -149, 39, -299, 42, -325.9, 42, -358.8, 34, -361.4, 34, -394.5, 16, -397.8, 16, -398, 27.199997, -383, 36.1, -383, 37.4, -362, 45.4, -362, 46.6, -343, 50.6, -343, 51.699997, -328.2, 54, -293, 54, -126, 50, -17.100006, 50, 191.40002, 56, 348.3, 56, 369.3, 49, 372.5, 49, 396.5, 35, 398, 35, 398, 24.599998, 397.59998, 23, 394.5, 23, 367, 37.800003, 367, 38.4, 344, 44.5, 344, 45.1, 325, 47.199997, 325, 47.9, 216, 43, 189.90002, 43, 188, 18.800003, 188, 14.800003, 189.79999, 13, 192.59998, 13, 191, 7, 191, -0.5999985, 177.29999, -19.5, 182, -37.8, 182, -41.8, 173, -50.8, 173, -52.3, 164.79999, -56, 145.5, -56, 141.5, -54, 139.09998, -54, 130.09998, -43, 127.29999, -43, 132, -27.8, 132, -20.7, 125, -12, 123.20001, -12, 119, 39.9, 119, 40.9, 6, 38, -59.100006, 38, -61, 10.900002, -61, 8.300003, -65, 3, -68.29999, -19, -67, -42.9, -67, -46.9, -77, -55.9)

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvh84yw24s0nd"]
+
+[ext_resource type="Script" uid="uid://38sf4s6oktj7" path="res://terrain.gd" id="1_206su"]
+[ext_resource type="Script" uid="uid://cqw4yp36wdhuo" path="res://world.gd" id="1_avahw"]
+[ext_resource type="PackedScene" uid="uid://7r6toeh66ak5" path="res://runner.tscn" id="2_0u6kl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0u6kl"]
+friction = 0.5
+bounce = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_avahw"]
+
+[node name="World" type="Node2D"]
+script = ExtResource("1_avahw")
+
+[node name="Terrain" type="Node" parent="." groups=["terrain"]]
+script = ExtResource("1_206su")
+num_hills = 1
+slice = 4
+hill_range = 250
+initial_hill_width_multiplier = 3.0
+
+[node name="Line2D" type="Line2D" parent="Terrain"]
+width = 5.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Terrain" groups=["terrain"]]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_0u6kl")
+
+[node name="Polygon2D" type="Polygon2D" parent="Terrain"]
+material = SubResource("ShaderMaterial_avahw")
+color = Color(1, 0.54901963, 1, 1)
+
+[node name="Skater" parent="." instance=ExtResource("2_0u6kl")]
+linear_damp = 0.1
