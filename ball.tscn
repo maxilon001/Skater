@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b12xux0o7olp3"]
+
+[ext_resource type="Texture2D" uid="uid://b4hs4w3pc3hl1" path="res://Sprite-0ball.png" id="1_x8fbi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x8fbi"]
+radius = 18.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x8fbi")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+limit_left = -150
+limit_bottom = 500
+drag_horizontal_enabled = true
+drag_horizontal_offset = -1.0
+drag_left_margin = 0.0
+drag_bottom_margin = 0.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_x8fbi")

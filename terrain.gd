@@ -37,7 +37,7 @@ func add_hills(initial: bool = false) -> void:
 	
 	if initial:
 		var initial_hill_slices = (hill_width * initial_hill_width_multiplier) / slice
-		for j in range(0, initial_hill_slices):
+		for j in range(-100, initial_hill_slices):
 			var hill_point = Vector2()
 			hill_point.x = j * slice
 			hill_point.y = start_y + initial_height * (1 + cos(PI + 2 * PI / initial_hill_slices * j)) / 2

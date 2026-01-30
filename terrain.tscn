@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvh84yw24s0nd"]
+[gd_scene load_steps=9 format=3 uid="uid://dvh84yw24s0nd"]
 
 [ext_resource type="Script" uid="uid://38sf4s6oktj7" path="res://terrain.gd" id="1_206su"]
 [ext_resource type="Script" uid="uid://cqw4yp36wdhuo" path="res://world.gd" id="1_avahw"]
 [ext_resource type="PackedScene" uid="uid://7r6toeh66ak5" path="res://runner.tscn" id="2_0u6kl"]
+[ext_resource type="PackedScene" uid="uid://b12xux0o7olp3" path="res://ball.tscn" id="3_avahw"]
+[ext_resource type="Script" uid="uid://cfs44q6oeuo80" path="res://ball.gd" id="4_n7k1k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0u6kl"]
-friction = 0.5
-bounce = 0.1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avahw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_n7k1k"]
+bounce = 0.1
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_avahw")
@@ -27,10 +30,24 @@ width = 5.0
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_0u6kl")
+constant_linear_velocity = Vector2(500, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="Terrain"]
 material = SubResource("ShaderMaterial_avahw")
 color = Color(1, 0.54901963, 1, 1)
 
-[node name="Skater" parent="." instance=ExtResource("2_0u6kl")]
-linear_damp = 0.1
+[node name="Skater" parent="." groups=["Skaters"] instance=ExtResource("3_avahw")]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_n7k1k")
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 100
+script = ExtResource("4_n7k1k")
+jump_velocity = -500
+
+[node name="Skater2" parent="." groups=["Skaters"] instance=ExtResource("2_0u6kl")]
+mass = 0.8
+contact_monitor = true
+max_contacts_reported = 100
+forward_speed = 1500
