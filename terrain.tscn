@@ -7,6 +7,9 @@
 [ext_resource type="Script" uid="uid://cfs44q6oeuo80" path="res://ball.gd" id="4_n7k1k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0u6kl"]
+friction = 0.0
+bounce = 0.4
+absorbent = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_avahw"]
 
@@ -30,7 +33,7 @@ width = 5.0
 collision_layer = 3
 collision_mask = 3
 physics_material_override = SubResource("PhysicsMaterial_0u6kl")
-constant_linear_velocity = Vector2(500, 0)
+constant_linear_velocity = Vector2(1000, 0)
 
 [node name="Polygon2D" type="Polygon2D" parent="Terrain"]
 material = SubResource("ShaderMaterial_avahw")
@@ -47,7 +50,6 @@ script = ExtResource("4_n7k1k")
 jump_velocity = -500
 
 [node name="Skater2" parent="." groups=["Skaters"] instance=ExtResource("2_0u6kl")]
-mass = 0.8
-contact_monitor = true
-max_contacts_reported = 100
-forward_speed = 1500
+mass = 0.5
+gravity_scale = 0.95
+forward_speed = 500

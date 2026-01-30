@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://bnuuskefhg132" path="res://snowboard with shoes.svg" id="2_f7b3c"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_m3p76"]
+friction = 0.0
+rough = true
+bounce = 0.2
+absorbent = true
 
 [node name="Skater" type="RigidBody2D"]
 collision_layer = 3
